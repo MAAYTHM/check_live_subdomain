@@ -4,7 +4,6 @@ import os
 from multiprocessing import Pool,cpu_count
 from socket import gethostbyname
 import requests as rq
-import sys
 
 
 def live_phase_2(domain):
@@ -48,5 +47,5 @@ l = sorted(l)
 try:
 	pool.map(live_phase_1(l))
 except Exception as e:
-	print('\n',e)
+	del e # print('\n',e) # debug
 	print('Finished...')
