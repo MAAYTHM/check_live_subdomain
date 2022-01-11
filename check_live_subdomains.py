@@ -1,7 +1,5 @@
-#!/usr/bin/python3
-
 import os
-from multiprocessing import Pool,cpu_count
+from multiprocessing import Pool, cpu_count
 from socket import gethostbyname
 import requests as rq
 
@@ -9,9 +7,9 @@ import requests as rq
 def live_phase_2(domain):
 	try:
 		code = rq.head('https://' + domain + '/', timeout=2).status_code # checking if domain is reachable
-		return [1,code]
+		return [1, code]
 	except Exception as e:
-		return [0,'']
+		return [0, '']
 
 
 def live_phase_1(list_):
@@ -29,7 +27,7 @@ def live_phase_1(list_):
 
 			# writing to file :-
 			with open('live.txt', 'a') as f:
-				f.write(l[length] + ',' + str(code[1]) + '\n')
+				f.write(res + ',' + l[length] + ',' + str(code[1]) + '\n')
 				f.close()
 
 		length += 1
@@ -47,5 +45,6 @@ l = sorted(l)
 try:
 	pool.map(live_phase_1(l))
 except Exception as e:
-	del e # print('\n',e) # debug
+	# print('\n',e) # debug
+	del e
 	print('Finished...')
