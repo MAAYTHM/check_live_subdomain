@@ -13,7 +13,7 @@ $ ls -la
 ## How to use?
 after having the huge subdomain list, **paste** this python file in same dir where you have 'subdomain.txt' and run it. Finally u will get 'live.txt' file made by this python file. like:-
 ```bash
-$ ./check_live_subdomain.py
+$ python3 check_live_subdomain.py
 569)  partner.glance.inmobi.com  ->  20.198.188.225 & code -  200
 590)  post.iff.inmobi.com  ->  52.221.11.60 & code -  200
 615)  pulse.inmobi.com  ->  40.81.254.85 & code -  200
