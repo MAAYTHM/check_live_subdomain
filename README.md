@@ -1,30 +1,70 @@
-# check_live_subdomain
-a python file to minimise your huge subdomain.txt , can be in use in Bug Bounty / Peneteration testing.
+# PulseSub
 
-## Requirements?
-1. python3
-2. python modules - 'os,requests,multiprocessing,socket'.
-3. a 'subdomain.txt' in which you gathered uniq subdomains related to your target. like :-
+**PulseSub** is a fast Python CLI tool to check which subdomains are live and reachable.  
+It’s ideal for bug bounty hunters, penetration testers, and anyone needing to filter a large list of subdomains.
+
+---
+
+## Features
+
+- Accepts single domains, files, or piped input.
+- Fast, concurrent checking using multiprocessing.
+- Outputs live subdomains with their IP and HTTP status code.
+- CLI flags for flexible usage and output customization.
+
+---
+
+## Requirements
+
+- Python 3.x
+- Python modules: `requests`, `multiprocessing`, `socket` (all standard except `requests`)
+- A list of subdomains (e.g., `subdomains.txt`)
+
+---
+
+## Installation
 ```bash
-$ ls -la
--rwx------ 1 maay maay 52539 Jan 11 02:47 subdomains.txt
+pip install requests
 ```
 
-## How to use?
-after having the huge subdomain list, **paste** this python file in same dir where you have 'subdomain.txt' and run it. Finally u will get 'live.txt' file made by this python file. like:-
+---
+
+## Usage
+
+### 1. **Single Domain**
 ```bash
-$ python3 check_live_subdomain.py
-569)  partner.glance.example.com  ->  20.198.188.225 & code -  200
-590)  post.iff.example.com  ->  52.221.11.60 & code -  200
-615)  pulse.example.com  ->  40.81.254.85 & code -  200
-etc..
-
-$ wc live.txt
-105  105 2644 live.txt
-
-$ head live.txt
-partner.glance.example.com,200
-post.iff.example.com,200
-pulse.example.com,200
-etc..
+python3 pulsesub.py -t example.com
 ```
+
+### 2. **From a File**
+```bash
+python3 pulsesub.py -f subdomains.txt
+```
+
+### 3. **Via Pipe**
+```bash
+cat subdomains.txt | python3 pulsesub.py
+```
+
+### 4. **Custom Output File & Concurrency**
+```bash
+python3 pulsesub.py -f subdomains.txt -o results.csv -c 8
+```
+
+---
+
+## Example Output
+![image](https://github.com/user-attachments/assets/25fcca10-ee22-48f5-8251-d020d884708d)
+
+---
+
+## License
+
+(c) 2025 Aayush Samriya  
+[MIT License](LICENSE)
+
+---
+
+## Author
+
+[github.com/MAAYTHM](https://github.com/MAAYTHM)
